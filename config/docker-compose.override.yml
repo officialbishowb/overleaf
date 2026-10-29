@@ -1,0 +1,12 @@
+---
+
+services:
+    cloudflared:
+        image: cloudflare/cloudflared:2026.10.4
+        container_name: overleaf-cloudflared
+        restart: always
+        command: tunnel --no-autoupdate run
+        env_file:
+            - ../config/cloudflared.env
+        depends_on:
+            - sharelatex
